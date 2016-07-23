@@ -11,6 +11,5 @@
      
       <modules>
         <module>bungeeplugin</module>
-		<!--- <module>another-project</module> --->
 	</modules>
 </project>
