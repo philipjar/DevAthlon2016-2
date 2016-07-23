@@ -10,6 +10,7 @@
       <packaging>pom</packaging>
      
       <modules>
-        <module>bungeeplugin</module>	
-	</modules>
+        <module>bungeeplugin</module>
+	<module>servercontroller</module>	
+      </modules>
 </project>
