@@ -14,7 +14,7 @@ public class DisconnectEvent implements Listener {
 	}
 
 	@EventHandler
-	public void onLogin(ServerDisconnectEvent e) {
+	public void onDisconnect(ServerDisconnectEvent e) {
 		ServerManager.stopCheck(e.getTarget());
 	}
 }

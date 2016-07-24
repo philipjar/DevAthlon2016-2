@@ -21,7 +21,7 @@ public class ServerManager {
 		}
 	}
 
-	private static void startServer(ServerInfo server) {
+	public static void startServer(ServerInfo server) {
 		System.out.println("[ServerManager] Server " + server.getName() + " is required - start");
 		servers.add(server);
 		if (new ConnectionHandler(server.getAddress()).sendMessage("start\n")) {
@@ -31,7 +31,7 @@ public class ServerManager {
 		}
 	}
 
-	private static void stopServer(ServerInfo server) {
+	public static void stopServer(ServerInfo server) {
 		System.out.println("[ServerManager] Server " + server.getName() + " is not used - shutdown");
 		servers.remove(server);
 		if (new ConnectionHandler(server.getAddress()).sendMessage("stop\n")) {
