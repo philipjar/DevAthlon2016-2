@@ -24,15 +24,20 @@ public class ServerManager {
 	private static void startServer(ServerInfo server) {
 		System.out.println("[ServerManager] Server " + server.getName() + " is required - start");
 		servers.add(server);
-		new ConnectionHandler(server.getAddress()).sendMessage("start\n");
-		System.out.println("[ServerManager] Server " + server.getName() + " started");
+		if (new ConnectionHandler(server.getAddress()).sendMessage("start\n")) {
+			System.out.println("[ServerManager] Server " + server.getName() + " started");
+		} else {
+			System.err.println("[ServerManager] Server " + server.getName() + " can not get started");
+		}
 	}
 
 	private static void stopServer(ServerInfo server) {
 		System.out.println("[ServerManager] Server " + server.getName() + " is not used - shutdown");
 		servers.remove(server);
-		new ConnectionHandler(server.getAddress()).sendMessage("stop\n");
-		System.out.println("[ServerManager] Server " + server.getName() + " stopped");
+		if (new ConnectionHandler(server.getAddress()).sendMessage("stop\n")) {
+			System.out.println("[ServerManager] Server " + server.getName() + " stopped");
+		}
+		System.out.println("[ServerManager] Server " + server.getName() + " can not get stopped");
 	}
 
 }
