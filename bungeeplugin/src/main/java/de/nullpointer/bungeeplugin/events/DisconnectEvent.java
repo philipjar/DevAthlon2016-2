@@ -15,9 +15,6 @@ public class DisconnectEvent implements Listener {
 
 	@EventHandler
 	public void onLogin(ServerDisconnectEvent e) {
-		System.out.println(
-				"Player: " + e.getPlayer().getDisplayName() + " has been disconnected from " + e.getTarget().getName());
 		ServerManager.update(e.getTarget());
-
 	}
 }

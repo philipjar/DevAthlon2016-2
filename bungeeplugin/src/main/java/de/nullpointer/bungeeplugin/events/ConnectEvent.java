@@ -15,7 +15,6 @@ public class ConnectEvent implements Listener {
 	
 	@EventHandler
 	public void onChange(ServerConnectEvent e) {
-		System.out.println("Player: " + e.getPlayer().getDisplayName() + " has been connected to " + e.getTarget().getName());
 		ServerManager.update(e.getTarget());
 	}
 
