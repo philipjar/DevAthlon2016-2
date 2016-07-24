@@ -5,36 +5,33 @@ import java.util.ArrayList;
 import net.md_5.bungee.api.config.ServerInfo;
 
 public class ServerManager {
-
-	static ArrayList<ServerInfo> allServers = new ArrayList<>();
-
-	public static void update(ServerInfo server) {
-
-		if (!allServers.contains(server)) {
-			System.out.println("Server " + server.getName() + " is requested - start");
-			addServer(server);
+	
+	static ArrayList<ServerInfo> servers = new ArrayList<>();
+	
+	public static void stopCheck(ServerInfo server) {
+		if (servers.contains(server) & server.getPlayers().size() < 1) {
+			stopServer(server);
 		}
-
-		for (ServerInfo sInfo : allServers) {
-			if (sInfo.getPlayers().size() < 1) {
-				System.out.println("Server " + server.getName() + " is empty - shutdown");
-				removeServer(sInfo);
-			}
+	}
+	
+	public static void startCheck(ServerInfo server) {
+		if (!servers.contains(server)) {
+			startServer(server);
 		}
 	}
 
-	private static void addServer(ServerInfo server) {
-		
-		allServers.add(server);
-		// Send start massage to server
-
+	private static void startServer(ServerInfo server) {
+		System.out.println("[ServerManager] Server " + server.getName() + " is required - start");
+		servers.add(server);
+		// Network stuff
+		System.out.println("[ServerManager] Server " + server.getName() + " started");
 	}
 
-	private static void removeServer(ServerInfo server) {
-		
-		allServers.remove(server);
-		// Send stop message to server
-
+	private static void stopServer(ServerInfo server) {
+		System.out.println("[ServerManager] Server " + server.getName() + " is not used - shutdown");
+		servers.remove(server);
+		// Network stuff
+		System.out.println("[ServerManager] Server " + server.getName() + " stopped");
 	}
 
 }

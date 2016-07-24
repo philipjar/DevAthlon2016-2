@@ -15,7 +15,7 @@ public class ConnectEvent implements Listener {
 	
 	@EventHandler
 	public void onChange(ServerConnectEvent e) {
-		ServerManager.update(e.getTarget());
+		ServerManager.startCheck(e.getTarget());
 	}
 
 }
