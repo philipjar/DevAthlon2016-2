@@ -8,7 +8,7 @@ import net.md_5.bungee.api.plugin.Command;
 public class StartCommand extends Command{
 	
 	public StartCommand() {
-		super("stop");
+		super("start");
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -16,7 +16,7 @@ public class StartCommand extends Command{
 	public void execute(CommandSender commandSender, String[] args) {
 		try {
 			ServerManager.startServer(ProxyServer.getInstance().getServerInfo(args[0]));
-		} catch (Exception e) {commandSender.sendMessage("Server nicht gefunden!");}
+		} catch (Exception e) {commandSender.sendMessage("Server not found!");}
 	}
 
 }
