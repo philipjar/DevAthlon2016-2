@@ -8,7 +8,7 @@ public class Main extends Plugin {
 	@Override
 	public void onEnable() {
 		loadEvents();
-		getLogger().info(getDescription().getName() + " on Version " + getDescription().getVersion() + " loaded!");
+		getLogger().info("§a" + getDescription().getName() + " on Version " + getDescription().getVersion() + " loaded!");
 	}
 
 	private void loadEvents() {

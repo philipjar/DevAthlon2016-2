@@ -7,6 +7,6 @@ public class LoginEvent implements Listener {
 		
 	@EventHandler
 	public void onLogin(LoginEvent e) {
-		
+		System.out.println("Loogin -----------------------");
 	}
 }
