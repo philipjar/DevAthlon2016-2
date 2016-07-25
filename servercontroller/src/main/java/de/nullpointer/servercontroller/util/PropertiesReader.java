@@ -39,7 +39,7 @@ public class PropertiesReader {
 		        propsMap.put(split[0], split[1]);
 		    }
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("No configuration file found. Using defaults");
 		}
 	}
 	
