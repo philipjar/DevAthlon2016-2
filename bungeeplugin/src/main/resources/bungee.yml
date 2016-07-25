@@ -1,4 +1,4 @@
 name: BungeePlugin
-main: java.de.nullpointer.bungeeplugin.Main
+main: de.nullpointer.bungeeplugin.Main
 version: 1.0
 author: NullPointer
