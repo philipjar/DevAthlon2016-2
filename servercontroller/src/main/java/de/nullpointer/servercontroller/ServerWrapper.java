@@ -21,9 +21,11 @@ public class ServerWrapper {
 		try {
 			serverProcess = Runtime.getRuntime().exec("java -jar " + PropertiesReader.getString("serverjar"));
 			processCommander = new PrintWriter(serverProcess.getOutputStream());
+			System.out.println("Server started successfully");
 			return 0;
 		} catch (IOException e) {
 			e.printStackTrace();
+			System.out.println("Server failed to start");
 			return 1;
 		}
 	}
@@ -35,7 +37,14 @@ public class ServerWrapper {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		return !serverProcess.isAlive() ? 0 : 1;
+		
+		if (!serverProcess.isAlive()) {
+			System.out.println("Server stopped successfully");
+			return 0;
+		} else {
+			System.out.println("Server failed to stop");
+			return 1;
+		}
 	}
 
 }

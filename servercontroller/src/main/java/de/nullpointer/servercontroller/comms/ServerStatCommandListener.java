@@ -38,20 +38,27 @@ public class ServerStatCommandListener extends Thread {
 	public void run() {
 		while (!isInterrupted()) {
 			try {
+				System.out.println("Waiting for BungeeServer to connect...");
 				socket = ssocket.accept();
+				System.out.println("BungeeServer connected: " + socket.getInetAddress().toString());
 				writer = new PrintWriter(socket.getOutputStream());
 				reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 				
 				switch (reader.readLine().toLowerCase()) {
 				case "start":
+					System.out.println("Received start command from BungeeServer");
 					writer.write(server.startServer());
 					break;
 				case "stop":
+					System.out.println("Received stop command from BungeeServer");
 					writer.write(server.stopServer());
 					break;
 				default:
+					System.out.println("Received UNKNOWN command from BungeeServer");
 					writer.write(2);
 				}
+				writer.close();
+				reader.close();
 				socket.close();
 			} catch (IOException e) {
 				e.printStackTrace();
